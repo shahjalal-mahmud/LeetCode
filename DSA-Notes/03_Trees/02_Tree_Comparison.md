@@ -184,7 +184,6 @@ bool isSubtree(TreeNode* root, TreeNode* subRoot) {
 3. Check values → false if mismatch
 4. Recurse on children
 
-
 ### When to use which approach
 
 - **Interview Default:** Recursive (clean, demonstrates understanding)
