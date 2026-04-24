@@ -225,4 +225,4 @@ bool isSubtree(TreeNode* root, TreeNode* subRoot) {
 
 ---
 
-_Last reviewed: [25 April 2026] | Next review: After learning Symmetric Tree & Subtree problems_
+_Last reviewed: [25 April 2026]_
