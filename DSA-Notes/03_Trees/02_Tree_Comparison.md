@@ -192,28 +192,6 @@ bool isSubtree(TreeNode* root, TreeNode* subRoot) {
 
 ---
 
-## 📝 Personal Notes
-
-**Aha moments:**
-
-- The `continue` in BFS when both null is crucial - allows complete tree traversal
-- Space complexity depends on tree SHAPE, not just node count
-- This problem is the foundation for most tree comparison problems
-
-**Common mistakes I made:**
-
-- Initially forgot to check both null before checking values
-- Mixed up order of base cases (check null first ALWAYS)
-
-**Interview tips:**
-
-- Start with recursive solution (30 seconds to write)
-- Mention space complexity caveat for skewed trees
-- Have iterative version ready if interviewer asks for optimization
-- Always discuss trade-offs before writing code
-
----
-
 ## 🎓 Key Takeaways
 
 1. **Always handle null cases first** - prevents null pointer errors
@@ -221,6 +199,181 @@ bool isSubtree(TreeNode* root, TreeNode* subRoot) {
 3. **Tree problems = Base cases + Recurse on children** - universal pattern
 4. **Space complexity = tree height** - crucial optimization point
 5. **This problem = building block** - memorizing the pattern unlocks 10+ other problems
+
+---
+
+## 📋 Problem 2: Symmetric Tree
+
+**LeetCode 101** | [🔗 View Problem](https://leetcode.com/problems/symmetric-tree/description/)
+
+**Difficulty:** Easy | **Frequency:** ⭐⭐⭐⭐⭐ (Very Common)
+
+### Problem Statement
+
+Given the root of a binary tree, check whether it is symmetric (a mirror of itself around its center).
+
+---
+
+### Solution 1: Recursive DFS (Mirror Check) ✅ My Solution
+
+```cpp
+class Solution {
+public:
+    bool isSymmetric(TreeNode* root){
+        if(root == nullptr) return true;
+        return isMirror(root->left, root->right);
+    }
+
+    bool isMirror(TreeNode* p, TreeNode* q){
+        if(p == nullptr && q == nullptr) return true;
+        if(p == nullptr || q == nullptr) return false;
+        if(p->val != q->val) return false;
+
+        return isMirror(p->left, q->right) &&
+               isMirror(p->right, q->left);
+    }
+};
+```
+
+**Complexity:**
+
+- Time: `O(n)` - visit each node once
+- Space: `O(h)` - recursion stack
+  - Balanced: `O(log n)`
+  - Skewed: `O(n)`
+
+**Why this works:**
+Instead of comparing same positions, we compare **mirror positions**:
+
+- Left of left subtree ↔ Right of right subtree
+- Right of left subtree ↔ Left of right subtree
+
+---
+
+### Solution 2: Iterative BFS (Queue)
+
+```cpp
+class Solution {
+public:
+    bool isSymmetric(TreeNode* root) {
+        if (!root) return true;
+
+        queue<TreeNode*> q;
+        q.push(root->left);
+        q.push(root->right);
+
+        while (!q.empty()) {
+            TreeNode* t1 = q.front(); q.pop();
+            TreeNode* t2 = q.front(); q.pop();
+
+            if (t1 == nullptr && t2 == nullptr) continue;
+            if (t1 == nullptr || t2 == nullptr) return false;
+            if (t1->val != t2->val) return false;
+
+            q.push(t1->left);
+            q.push(t2->right);
+
+            q.push(t1->right);
+            q.push(t2->left);
+        }
+
+        return true;
+    }
+};
+```
+
+**Complexity:**
+
+- Time: `O(n)`
+- Space: `O(w)` (max width)
+
+**Best for:** Avoid recursion, safer for deep trees
+
+---
+
+## ⚖️ Trade-offs Comparison
+
+| Approach      | Space | Risk                      | Readability | Use Case                  |
+| ------------- | ----- | ------------------------- | ----------- | ------------------------- |
+| Recursive DFS | O(h)  | Stack overflow if deep    | ⭐⭐⭐⭐⭐  | Default choice            |
+| Iterative BFS | O(w)  | Memory heavy if tree wide | ⭐⭐⭐⭐    | Deep trees / no recursion |
+
+---
+
+## 🎯 Interview Questions & Answers
+
+### Q1: Difference between Same Tree and Symmetric Tree?
+
+**Answer:**
+
+- Same Tree → compare `(left, left)` and `(right, right)`
+- Symmetric Tree → compare `(left, right)` and `(right, left)`
+
+👉 This is the **key pattern shift**
+
+---
+
+### Q2: Can we solve using DFS iteratively?
+
+**Answer:** Yes, using a stack with node pairs:
+
+```cpp
+stack<pair<TreeNode*, TreeNode*>> st;
+st.push({root->left, root->right});
+```
+
+Same mirror logic applies.
+
+---
+
+### Q3: What is the key observation?
+
+**Answer:**
+Tree is symmetric if:
+
+```
+Left subtree == Mirror of Right subtree
+```
+
+---
+
+### Q4: What breaks symmetry?
+
+- Structure mismatch (null vs non-null)
+- Value mismatch
+- Incorrect mirror pairing
+
+---
+
+### Q5: Time & Space Complexity?
+
+- Time: `O(n)` → must check all nodes
+- Space:
+  - Recursive: `O(h)`
+  - Iterative: `O(w)`
+
+---
+
+## 🧠 Patterns & Learnings
+
+### Pattern Recognized: **Mirror Tree Pattern**
+
+1. Both null → true
+2. One null → false
+3. Values equal
+4. Compare:
+   - `left.left` ↔ `right.right`
+   - `left.right` ↔ `right.left`
+
+---
+
+## 🎓 Key Takeaways
+
+1. **Small change in pairing = completely new problem**
+2. **Think in mirror, not parallel**
+3. **Same Tree → Symmetric Tree → Subtree → All connected**
+4. **Queue/Stack always store pairs**
+5. **Pattern reuse is everything in DSA**
 
 ---
 

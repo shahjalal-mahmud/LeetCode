@@ -12,7 +12,7 @@ struct TreeNode {
 class Solution {
     public:
     bool isSymmetric(TreeNode* root){
-        if(root != nullptr) return true;
+        if(root == nullptr) return true;
         return isMirror(root->left, root->right);
     }
     bool isMirror(TreeNode* p, TreeNode* q){
@@ -21,9 +21,7 @@ class Solution {
         if(p->val != q->val) return false;
         return isMirror(p->left, q->right) && isMirror(p->right, q->left);
     }
-}
-
-#include <queue>
+};
 
 // Iterative approach using a queue
 class Solution2 {
