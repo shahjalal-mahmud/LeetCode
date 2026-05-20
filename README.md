@@ -36,18 +36,18 @@ Each folder contains problems related to that topic. Every solution file is name
 
 ## 🗂️ Topics Covered
 
-| Topic | Status |
-|---|---|
-| Arrays & Strings | 🔄 In Progress |
-| Linked Lists | 🔄 In Progress |
-| Stacks & Queues | ⏳ Upcoming |
-| Trees & Binary Search Trees | ⏳ Upcoming |
-| Graphs & BFS/DFS | ⏳ Upcoming |
-| Dynamic Programming | ⏳ Upcoming |
-| Sorting & Searching | ⏳ Upcoming |
-| Hashing & HashMaps | ⏳ Upcoming |
-| Two Pointers & Sliding Window | ⏳ Upcoming |
-| Recursion & Backtracking | ⏳ Upcoming |
+| Topic                         | Status         |
+| ----------------------------- | -------------- |
+| Arrays & Strings              | 🔄 In Progress |
+| Linked Lists                  | 🔄 In Progress |
+| Stacks & Queues               | ⏳ Upcoming    |
+| Trees & Binary Search Trees   | ⏳ Upcoming    |
+| Graphs & BFS/DFS              | ⏳ Upcoming    |
+| Dynamic Programming           | ⏳ Upcoming    |
+| Sorting & Searching           | ⏳ Upcoming    |
+| Hashing & HashMaps            | ⏳ Upcoming    |
+| Two Pointers & Sliding Window | ⏳ Upcoming    |
+| Recursion & Backtracking      | ⏳ Upcoming    |
 
 ---
 
@@ -61,7 +61,7 @@ Each folder contains problems related to that topic. Every solution file is name
 
 1. Clone the repo:
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
+   git clone https://github.com/shahjalal-mahmud/LeetCode
    ```
 2. Browse by topic folder
 3. Open any solution file to read the approach and code
@@ -79,6 +79,6 @@ If you're also on a similar journey — preparing for interviews and grinding DS
 
 ---
 
-> *"The only way to get better at problem solving is to solve more problems."*
+> _"The only way to get better at problem solving is to solve more problems."_
 
 ⭐ Star this repo if you find it helpful or if you're on the same journey!
