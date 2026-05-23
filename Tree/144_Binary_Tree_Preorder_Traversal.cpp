@@ -29,3 +29,20 @@ public:
         return result;
     }
 };
+
+class Solution2 {
+public:
+    void traverse(TreeNode* node, vector<int>& result) {
+        if (!node) return;
+        
+        result.push_back(node->val);  // Root
+        traverse(node->left, result);  // Left
+        traverse(node->right, result); // Right
+    }
+
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> result;
+        traverse(root, result);
+        return result;
+    }
+};
